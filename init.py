@@ -2,10 +2,12 @@ import pyautogui
 import time
 
 def save_position(label):
-    """保存当前鼠标位置并返回"""
-    input(f"请将鼠标移动到 {label}，然后按下回车键...")
+    """提示用户点击鼠标以记录当前位置"""
+    pyautogui.alert(f"请点击 {label} 的位置")
+    # 等待用户点击鼠标并获取当前坐标
+    time.sleep(2)  # 稍微等待一下，以防用户没有立即点击
     x, y = pyautogui.position()
-    print(f"{label} 的坐标已保存: ({x}, {y})")
+    pyautogui.alert(f"{label} 的坐标已保存: ({x}, {y})")
     return (x, y)
 
 def write_positions_to_file(positions, filename="positions.txt"):
@@ -14,7 +16,7 @@ def write_positions_to_file(positions, filename="positions.txt"):
         for i, pos in enumerate(positions, start=1):
             file.write(f"按钮{i}坐标: {pos[0]}, {pos[1]}\n")
         file.write(f"提交按钮坐标: {positions[-1][0]}, {positions[-1][1]}\n")
-    print(f"\n所有坐标已保存到 {filename} 文件中！")
+    pyautogui.alert(f"\n所有坐标已保存到 {filename} 文件中！")
 
 def main():
     # 用于保存二进制位按钮的位置列表
