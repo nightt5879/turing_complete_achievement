@@ -3,7 +3,7 @@ import time
 
 def save_position(label):
     """提示用户点击鼠标以记录当前位置"""
-    pyautogui.alert(f"请点击 {label} 的位置")
+    pyautogui.alert(f"请移动到 {label} 的位置，等待2s自动记录")
     # 等待用户点击鼠标并获取当前坐标
     time.sleep(2)  # 稍微等待一下，以防用户没有立即点击
     x, y = pyautogui.position()
